@@ -224,9 +224,9 @@ export const PROJECTS = [
     title: "Adskipper: Auto Skip Ads",
     image: "/projects/project.png",
     description:
-      "This is a 2D Game developed using Godot Engine.\nNote : Please wait for the game to load while opening",
+      "This is native android app that can skip ads for you while you are watching youtube, Avaliable on play store",
     link: "https://adskipper.evolvarc.com/",
-    tags: [ "Kotlin", "Android Development",""]
+    tags: [ "Kotlin", "Android Development","Accessibility"]
 
   },
 ];
@@ -245,7 +245,7 @@ export const FOOTER_DATA = [
       {
         name: "GitHub",
         icon: RxGithubLogo,
-        link: "https://github.com",
+        link: "https://github.com/jaswanthsatyadev",
       },
       {
         name: "Discord",
@@ -265,12 +265,12 @@ export const FOOTER_DATA = [
       {
         name: "Twitter",
         icon: RxTwitterLogo,
-        link: "https://twitter.com",
+        link: "https://x.com/jaswanthsatydev",
       },
       {
         name: "Linkedin",
         icon: RxLinkedinLogo,
-        link: "https://linkedin.com",
+        link: "https://www.linkedin.com/in/jaswanth-satya-dev/",
       },
     ],
   },
@@ -290,7 +290,7 @@ export const FOOTER_DATA = [
       {
         name: "Contact Me",
         icon: null,
-        link: "mailto:contact@example.com",
+        link: "mailto:jaswanthsatyadev55@gmail.com",
       },
     ],
   },
