@@ -29,6 +29,7 @@ const HeroContent = dynamic(
   () => import("../sub/hero-content").then((mod) => mod.HeroContent),
   {
     ssr: false,
+    loading: () => <LoadingSpinner />,
   }
 );
 
@@ -104,15 +105,15 @@ export const Hero = () => {
           </div>
           <div className="w-full lg:w-1/2 h-[650px] mt-10 lg:mt-0">
             {/* **THE FIX:** The animation is now directly controlled by the loading state */}
+            {!isSplineLoaded && <LoadingSpinner />}
             <motion.div
               initial="hidden"
               animate={isSplineLoaded ? "visible" : "hidden"}
               variants={slideInFromRight(0.8)}
               className="w-full h-full"
+              style={{ display: isSplineLoaded ? 'block' : 'none' }}
             >
-              <Suspense fallback={<LoadingSpinner />}>
-                <HeroContent onLoad={() => setIsSplineLoaded(true)} />
-              </Suspense>
+              <HeroContent onLoad={() => setIsSplineLoaded(true)} />
             </motion.div>
           </div>
         </div>

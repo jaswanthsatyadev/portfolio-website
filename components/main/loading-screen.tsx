@@ -1,34 +1,58 @@
-
+"use client";
 
 import { useEffect, useState } from 'react';
-import Spline from '@splinetool/react-spline/next';
+import { motion, AnimatePresence } from 'framer-motion';
 
-interface LoadingScreenProps {
-  onLoaded: () => void;
-}
-
-export default function LoadingScreen({ onLoaded }: LoadingScreenProps) {
-  const [fadeOut, setFadeOut] = useState(false);
+export default function LoadingScreen() {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      // Allow time for fade-out animation before calling onLoaded
+    // Function to handle page load
+    const handleLoad = () => {
+      // Add a small delay to ensure smooth transition
       setTimeout(() => {
-        onLoaded();
-      }, 1000); // Assuming 1s fade-out duration
-    }, 4000);
+        setIsLoading(false);
+      }, 800);
+    };
 
-    return () => clearTimeout(timer);
-  }, [onLoaded]);
+    // Check if document is already loaded
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    // Fallback timeout to ensure it doesn't stay forever
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
-    <div
-      className={`fixed inset-0 bg-black z-[999] flex items-center justify-center transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
-    >
-      <Spline
-        scene="https://prod.spline.design/qcWOD5ERI5M9kZZg/scene.splinecode"
-      />
-    </div>
+    <AnimatePresence>
+      {isLoading && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="fixed inset-0 bg-[#030014] z-[999] flex flex-col items-center justify-center"
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center"
+          >
+            <div className="text-white text-2xl mb-6 font-bold tracking-widest uppercase">Loading</div>
+            <div className="w-12 h-12 border-4 border-t-[#7042f8] border-r-transparent border-b-[#7042f8] border-l-transparent rounded-full animate-spin"></div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

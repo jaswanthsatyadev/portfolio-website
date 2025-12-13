@@ -131,6 +131,18 @@ export const ALL_SKILLS = [
     width: 62,
     height: 62,
   },
+  {
+    skill_name: "Selenium",
+    image: "/skills/selenium-svgrepo-com.svg",
+    width: 62,
+    height: 62,
+  },  
+  {
+    skill_name: "Pytest",
+    image: "/skills/pytest.svg",
+    width: 62,
+    height: 62,
+  },
 ] as const;
 
 export const SOCIALS = [
@@ -147,7 +159,7 @@ export const SOCIALS = [
 ] as const;
 
 
-// Updated Projects Data
+// Projects Data
 export const PROJECTS = [
   {
     title: "MediMate AI",
@@ -188,7 +200,34 @@ export const PROJECTS = [
     description:
       "This website is made completely using HTML and Vanilla CSS .",
     link: "https://sanctuary-sphere.vercel.app/",
-    tags: [ "HTML", "CSS Magic"],
+    tags: [ "HTML", "CSS", "Spline"],
+  },
+  // {
+  //   title: "AutoTestGenie",
+  //   image: "",
+  //   description:
+  //     "This website is made for testers to generate selenium and pytest code instantly which modern AI chat bots fail to achive.",
+  //   link: "",
+  //   tags: [ "ReactJS", "FastAPI", "TailwindCSS"],
+
+  // },
+  {
+    title: "Steel Of Shadows",
+    image: "/projects/project6.png",
+    description:
+      "This is a 2D Game developed using Godot Engine.\nNote : Please wait for the game to load while opening",
+    link: "https://xpsoft.itch.io/dungescape",
+    tags: [ "Godot", "GDScript","OOPS"]
+
+  },
+  {
+    title: "Adskipper: Auto Skip Ads",
+    image: "/projects/project.png",
+    description:
+      "This is a 2D Game developed using Godot Engine.\nNote : Please wait for the game to load while opening",
+    link: "https://adskipper.evolvarc.com/",
+    tags: [ "Kotlin", "Android Development",""]
+
   },
 ];
 

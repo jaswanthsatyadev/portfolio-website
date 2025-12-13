@@ -4,7 +4,7 @@ import "./globals.css";
 import { StarsCanvas } from "@/components/main/star-background";
 import { Navbar } from "@/components/main/navbar";
 import { Footer } from "@/components/main/footer";
-import { CustomCursor } from "@/components/sub/CustomCursor"; 
+import LoadingScreen from "@/components/main/loading-screen";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
       >
-        <CustomCursor /> {/* Add the cursor component here */}
+        <LoadingScreen />
         <StarsCanvas />
         <Navbar />
         {children}
