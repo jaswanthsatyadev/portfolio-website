@@ -222,11 +222,29 @@ export const PROJECTS = [
   },
   {
     title: "Adskipper: Auto Skip Ads",
-    image: "/projects/project.png",
+    image: "/projects/project7.png",
     description:
       "This is native android app that can skip ads for you while you are watching youtube, Avaliable on play store",
-    link: "https://adskipper.evolvarc.com/",
+    link: "https://play.google.com/store/apps/details?id=com.evolvarc.adskipper",
     tags: [ "Kotlin", "Android Development","Accessibility"]
+
+  },
+  {
+    title: "Stockpulse: Stock Market News",
+    image: "/projects/project8.png",
+    description:
+      "This is your one stop solution app for all your stock market news needs in a very organised manner, Avaliable on play store",
+    link: "https://play.google.com/store/apps/details?id=com.evolvarc.stockpulse",
+    tags: [ "Flutter", "PostgreSQL", "RSS Feeds Scrapper", "Kotak Neo API"]
+
+  },
+  {
+    title: "Ember: Music App",
+    image: "/projects/project9.png",
+    description:
+      "This is a music app just like spotify, has a collection of more than 100 million songs",
+    link: "ember.evolvarc.com",
+    tags: [ "Kotlin","ytmusic-api (unofficial)", "Spotify API"]
 
   },
 ];
