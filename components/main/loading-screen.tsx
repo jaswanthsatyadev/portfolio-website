@@ -7,29 +7,31 @@ export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Function to handle page load
+    // Prevent scrolling while loading
+    document.body.style.overflow = 'hidden';
+
     const handleLoad = () => {
-      // Add a small delay to ensure smooth transition
       setTimeout(() => {
         setIsLoading(false);
-      }, 800);
+        document.body.style.removeProperty('overflow');
+      }, 1000);
     };
 
-    // Check if document is already loaded
     if (document.readyState === 'complete') {
       handleLoad();
     } else {
       window.addEventListener('load', handleLoad);
     }
 
-    // Fallback timeout to ensure it doesn't stay forever
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+      document.body.style.removeProperty('overflow');
+    }, 4000);
 
     return () => {
       window.removeEventListener('load', handleLoad);
       clearTimeout(timeout);
+      document.body.style.removeProperty('overflow');
     };
   }, []);
 
@@ -39,18 +41,29 @@ export default function LoadingScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           className="fixed inset-0 bg-[#030014] z-[999] flex flex-col items-center justify-center"
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center"
-          >
-            <div className="text-white text-2xl mb-6 font-bold tracking-widest uppercase">Loading</div>
-            <div className="w-12 h-12 border-4 border-t-[#7042f8] border-r-transparent border-b-[#7042f8] border-l-transparent rounded-full animate-spin"></div>
-          </motion.div>
+          <div className="relative flex items-center justify-center">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              className="w-24 h-24 border-4 border-transparent border-t-purple-500 border-r-cyan-500 rounded-full absolute"
+            />
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              className="w-16 h-16 border-4 border-transparent border-l-purple-500 border-b-cyan-500 rounded-full absolute"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-gray-200 text-sm font-light tracking-[0.2em] z-10"
+            >
+              LOADING
+            </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

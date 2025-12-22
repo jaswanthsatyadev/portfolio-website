@@ -165,7 +165,7 @@ export const PROJECTS = [
     title: "MediMate AI",
     image: "/projects/project1.png",
     description:
-      "An AI-powered virtual health assistant that helps users check symptoms, track meds, and get instant health insights. Your personal ChatGPT for healthcare.",
+      "An AI-powered virtual health assistant that streamlines patient care. It offers instant symptom checks, medication tracking, and health insights—effectively a personal ChatGPT for healthcare, designed to reduce consultation wait times.",
     link: "https://medimate-7od6.vercel.app/health-analysis",
     tags: ["Genkit", "Next.js", "Firebase", "Gemini"],
   },
@@ -173,7 +173,7 @@ export const PROJECTS = [
     title: "AutoFare - Bus Booking System",
     image: "/projects/project2.png",
     description:
-      "An AI‑powered smart ticket verification system for public buses using real-time selfie verification against CCTV frames to reduce fare evasion and speed up boarding.",
+      "A smart ticket verification system leveraging real-time facial recognition. It eliminates fare evasion and speeds up boarding by verifying passenger selfies against CCTV frames, optimizing public transport efficiency.",
     link: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
     tags: ["API", "Next.js", "MongoDB", "Typescript"],
   },
@@ -181,7 +181,7 @@ export const PROJECTS = [
     title: "AutoFare - AI Backend",
     image: "/projects/project3.png",
     description:
-      "High-performance backend enabling real-time face verification between a passenger’s selfie and CCTV snapshots from inside public buses, using face-api.js.",
+      "The high-performance engine behind AutoFare. It processes real-time face verification between passenger selfies and CCTV snapshots using face-api.js, ensuring scalable and secure authentication for mass transit.",
     link: "https://auto-fare.vercel.app/",
     tags: ["Node.js", "Face Recognition", "Genkit", "MongoDB"],
 
@@ -190,7 +190,7 @@ export const PROJECTS = [
     title: "AI Learning Hub",
     image: "/projects/project4.png",
     description:
-      "A personalized learning platform powered by AI that helps users master AI, ML, and Data Science with smart roadmaps and curated resources.",
+      "A personalized, AI-driven learning platform that curates smart roadmaps for mastering AI, ML, and Data Science. It cuts through the noise to provide a direct, efficient path to upskilling.",
     link: "https://ai-learing-hub.netlify.app/",
     tags: ["Next.js", "llama", "HuggingFace", "Supabase"],
   },
@@ -198,7 +198,7 @@ export const PROJECTS = [
     title: "Sanctuary Sphere",
     image: "/projects/project5.png",
     description:
-      "This website is made completely using HTML and Vanilla CSS .",
+      "A visually immersive web experience built with pure HTML and Vanilla CSS, demonstrating that elegant design doesn't always require complex frameworks.",
     link: "https://sanctuary-sphere.vercel.app/",
     tags: [ "HTML", "CSS", "Spline"],
   },
@@ -215,7 +215,7 @@ export const PROJECTS = [
     title: "Steel Of Shadows",
     image: "/projects/project6.png",
     description:
-      "This is a 2D Game developed using Godot Engine.\nNote : Please wait for the game to load while opening",
+      "A 2D action game developed in Godot. It showcases object-oriented programming principles in a real-time interactive environment.",
     link: "https://xpsoft.itch.io/dungescape",
     tags: [ "Godot", "GDScript","OOPS"]
 
@@ -224,7 +224,7 @@ export const PROJECTS = [
     title: "Adskipper: Auto Skip Ads",
     image: "/projects/project7.png",
     description:
-      "This is native android app that can skip ads for you while you are watching youtube, Avaliable on play store",
+      "A native Android utility that automatically skips YouTube ads, saving users time and enhancing their viewing experience. A practical automation tool available on the Play Store.",
     link: "https://play.google.com/store/apps/details?id=com.evolvarc.adskipper",
     tags: [ "Kotlin", "Android Development","Accessibility"]
 
@@ -242,8 +242,8 @@ export const PROJECTS = [
     title: "Ember: Music App",
     image: "/projects/project9.png",
     description:
-      "This is a music app just like spotify, has a collection of more than 100 million songs",
-    link: "ember.evolvarc.com",
+      "This is a music app just like spotify, has a collection of more than 100 million songs for free, organised beautifully with material 3 expressive design, download and check it out",
+    link: "https://github.com/jaswanthsatyadev/ember-releases/releases",
     tags: [ "Kotlin","ytmusic-api (unofficial)", "Spotify API"]
 
   },

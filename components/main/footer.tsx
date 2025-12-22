@@ -12,8 +12,6 @@ const myLinks = [
 ];
 
 export const Footer = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
   return (
     <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-4 md:p-8 relative mt-64">
       {/* **THE FIX:** The UFO container now has overflow-hidden to crop the logo */}
@@ -62,13 +60,15 @@ export const Footer = () => {
                 style={{ textShadow: '0 0 10px rgba(192, 77, 246, 0.5)' }}>
               Support My Work
             </h3>
-            <button
-              onClick={() => setIsModalOpen(true)}
+            <Link
+              href="https://buymeacoffee.com/jaswanthsatyadev"
+              target="_blank"
+              rel="noreferrer noopener"
               className="text-sm my-1 text-gray-300 hover:brightness-125 hover:text-white transition cursor-pointer"
               style={{ textShadow: '0 0 5px rgba(255, 255, 255, 0.3)' }}
             >
-              Buy me a coffee (UPI)
-            </button>
+              Buy me a coffee
+            </Link>
           </div>
         </div>
 
@@ -76,29 +76,6 @@ export const Footer = () => {
           &copy; {new Date().getFullYear()} Satya Dev. All rights reserved.
         </div>
       </div>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
-          <div className="bg-[#030014] p-8 rounded-lg shadow-2xl border border-purple-800 relative">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-2 right-3 text-white text-2xl"
-            >
-              &times;
-            </button>
-            <h2 className="text-xl font-bold text-center mb-4 text-white">
-              Scan to Pay with UPI
-            </h2>
-            <Image
-              src="/upiqr.jpg"
-              alt="UPI QR Code"
-              width={250}
-              height={250}
-              className="rounded-md"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
