@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-const Spline = React.lazy(() => import("@splinetool/react-spline"));
+import Spline from '@splinetool/react-spline/next';
 
 // Your personalized links
 const myLinks = [
@@ -17,9 +17,7 @@ export const Footer = () => {
       {/* **THE FIX:** The UFO container now has overflow-hidden to crop the logo */}
       <div className="w-full absolute -top-[450px] left-0 z-10 h-[800px] overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[110%]">
-            <React.Suspense fallback={null}>
-              <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
-            </React.Suspense>
+            <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
         </div>
       </div>
 
