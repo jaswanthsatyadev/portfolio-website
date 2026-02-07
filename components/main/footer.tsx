@@ -59,7 +59,7 @@ export const Footer = () => {
               Support My Work
             </h3>
             <Link
-              href="https://buymeacoffee.com/jaswanthsatyadev"
+              href="https://razorpay.me/@jaswanthsatyadev"
               target="_blank"
               rel="noreferrer noopener"
               className="text-sm my-1 text-gray-300 hover:brightness-125 hover:text-white transition cursor-pointer"
