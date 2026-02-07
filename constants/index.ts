@@ -121,7 +121,7 @@ export const ALL_SKILLS = [
   },
   {
     skill_name: "Godot",
-    image: "/skills/Godot Engine.svg",
+    image: "/skills/godot-engine.svg",
     width: 62,
     height: 62,
   },

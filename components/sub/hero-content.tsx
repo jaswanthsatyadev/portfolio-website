@@ -1,8 +1,18 @@
 "use client";
 
 import Spline from '@splinetool/react-spline/next';
+import { useEffect } from 'react';
 
 export const HeroContent = ({ onLoad }: { onLoad?: () => void }) => {
+  useEffect(() => {
+    // Fallback in case Spline doesn't call onLoad
+    const timeout = setTimeout(() => {
+      if (onLoad) onLoad();
+    }, 3000);
+    
+    return () => clearTimeout(timeout);
+  }, [onLoad]);
+
   return (
     // **THE FIX:** The outer container acts as a frame to crop the content.
     <div className="w-full h-full relative overflow-hidden">
