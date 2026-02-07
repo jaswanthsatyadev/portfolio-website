@@ -86,7 +86,7 @@ export const Hero = () => {
   const [isSplineLoaded, setIsSplineLoaded] = useState(false);
 
   return (
-    <section className="relative flex flex-col h-screen w-full overflow-hidden" id="home">
+    <section className="relative flex flex-col min-h-screen w-full overflow-hidden" id="home">
       {!isMobile && (
         <video
           autoPlay
@@ -98,12 +98,12 @@ export const Hero = () => {
         </video>
       )}
 
-      <div className="relative flex items-center justify-center w-full h-full z-[20]">
-        <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-10">
+      <div className="relative flex items-center justify-center w-full h-full z-[20] pt-[100px] sm:pt-[120px] md:pt-[100px] lg:pt-[80px]">
+        <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-4 sm:px-6 md:px-10">
           <div className="w-full lg:w-1/2">
             <HeroText />
           </div>
-          <div className="w-full lg:w-1/2 h-[650px] mt-10 lg:mt-0">
+          <div className="w-full lg:w-1/2 h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] mt-6 lg:mt-0">
             {/* **THE FIX:** The animation is now directly controlled by the loading state */}
             {!isSplineLoaded && <LoadingSpinner />}
             <motion.div

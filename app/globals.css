@@ -91,6 +91,15 @@ html {
 .animate-scroll-right {
   animation: scroll-right 80s linear infinite;
 }
+
+@media (max-width: 640px) {
+  .animate-scroll-left {
+    animation: scroll-left 40s linear infinite;
+  }
+  .animate-scroll-right {
+    animation: scroll-right 40s linear infinite;
+  }
+}
 /* --- Sleek Rotating Neon Border for Glass Cards --- */
 
 @property --angle {

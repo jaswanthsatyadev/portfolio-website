@@ -3,10 +3,10 @@
 import { TypeAnimation } from "react-type-animation";
 
 export const Typewriter = () => {
-  const fullText = "I have experience in building AI-driven systems, automations and battle-tested software applications with elegance and speed.";
+  const fullText = "I specialize in building native and cross-platform applications, dynamic websites, immersive 2D games, and AI-powered automation solutions that drive innovation and efficiency.";
 
   return (
-    <div className="relative text-xl lg:text-2xl my-5 max-w-[600px] tracking-wide min-h-[120px]">
+    <div className="relative text-base sm:text-lg md:text-xl lg:text-2xl my-3 sm:my-5 max-w-[600px] tracking-wide min-h-[80px] sm:min-h-[100px] md:min-h-[120px]">
         <TypeAnimation
           sequence={[
             fullText,

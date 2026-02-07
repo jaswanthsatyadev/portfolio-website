@@ -13,7 +13,7 @@ const SkillRow = ({ skills, direction }: { skills: Skill[]; direction: "left" | 
     <div className={`flex ${animationClass}`}>
       {/* Render the skills list the first time */}
       {skills.map((skill) => (
-        <div key={skill.skill_name} className="flex-shrink-0 px-8">
+        <div key={skill.skill_name} className="flex-shrink-0 px-4 sm:px-6 md:px-8">
           <SkillDataProvider
             src={skill.image}
             name={skill.skill_name}
@@ -25,7 +25,7 @@ const SkillRow = ({ skills, direction }: { skills: Skill[]; direction: "left" | 
       ))}
       {/* Render the exact same list a second time to create the infinite effect */}
       {skills.map((skill) => (
-        <div key={`${skill.skill_name}-clone`} aria-hidden="true" className="flex-shrink-0 px-8">
+        <div key={`${skill.skill_name}-clone`} aria-hidden="true" className="flex-shrink-0 px-4 sm:px-6 md:px-8">
           <SkillDataProvider
             src={skill.image}
             name={skill.skill_name}
@@ -47,10 +47,10 @@ export const Skills = () => {
   return (
     <section
       id="skills"
-      className="flex flex-col items-center justify-center gap-3 h-full relative py-[90px]"
+      className="flex flex-col items-center justify-center gap-3 h-full relative py-[50px] sm:py-[70px] md:py-[90px] overflow-hidden"
     >
       <SkillText />
-      <div className="flex flex-col gap-5 mt-4 w-full">
+      <div className="flex flex-col gap-5 mt-4 w-full overflow-hidden">
         <SkillRow skills={firstHalf} direction="left" />
         <SkillRow skills={secondHalf} direction="right" />
       </div>

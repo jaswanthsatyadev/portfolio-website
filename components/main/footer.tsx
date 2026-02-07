@@ -13,16 +13,16 @@ const myLinks = [
 
 export const Footer = () => {
   return (
-    <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-4 md:p-8 relative mt-64">
+    <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-4 md:p-8 relative mt-32 sm:mt-48 md:mt-64">
       {/* **THE FIX:** The UFO container now has overflow-hidden to crop the logo */}
-      <div className="w-full absolute -top-[450px] left-0 z-10 h-[800px] overflow-hidden">
+      <div className="w-full absolute -top-[250px] sm:-top-[350px] md:-top-[450px] left-0 z-10 h-[500px] sm:h-[650px] md:h-[800px] overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[110%]">
             <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
         </div>
       </div>
 
-      <div className="relative z-20 w-full flex flex-col items-center justify-center m-auto">
-        <div className="w-full h-full flex flex-col md:flex-row items-center justify-around flex-wrap">
+      <div className="relative z-20 w-full flex flex-col items-center justify-center m-auto px-4 sm:px-6">
+        <div className="w-full h-full flex flex-col md:flex-row items-center justify-around flex-wrap gap-6 md:gap-0">
           
           <div className="min-w-[200px] h-auto flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
             <h3 className="font-bold text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500"
@@ -70,7 +70,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-16 mb-4 text-sm text-center text-gray-500">
+        <div className="mt-10 sm:mt-12 md:mt-16 mb-4 text-xs sm:text-sm text-center text-gray-500">
           &copy; {new Date().getFullYear()} Satya Dev. All rights reserved.
         </div>
       </div>

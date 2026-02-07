@@ -20,8 +20,8 @@ export const SkillDataProvider = ({
   index,
 }: SkillDataProviderProps) => {
   return (
-    <motion.div>
-      <Image src={src} width={width} height={height} alt={name} />
+    <motion.div className="flex items-center justify-center">
+      <Image src={src} width={width} height={height} alt={name} className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[62px] md:h-[62px]" />
     </motion.div>
   );
 };

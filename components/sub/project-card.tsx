@@ -57,8 +57,8 @@ export const ProjectCard = ({ src, title, description, link, tags }: ProjectCard
             />
 
             <div className="relative mt-4">
-              <h1 className="text-2xl font-semibold text-white">{title}</h1>
-              <p className="mt-2 text-gray-400 text-sm">{description}</p>
+              <h1 className="text-xl sm:text-2xl font-semibold text-white">{title}</h1>
+              <p className="mt-2 text-gray-400 text-xs sm:text-sm">{description}</p>
               <div className="flex flex-wrap mt-4 gap-2">
                 {tags.map((tag) => (
                   <span
