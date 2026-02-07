@@ -14,7 +14,7 @@ export default function LoadingScreen() {
       setTimeout(() => {
         setIsLoading(false);
         document.body.style.removeProperty('overflow');
-      }, 500);
+      }, 300);
     };
 
     if (document.readyState === 'complete') {
@@ -23,11 +23,11 @@ export default function LoadingScreen() {
       window.addEventListener('load', handleLoad);
     }
 
-    // Guaranteed timeout to prevent infinite loading
+    // Guaranteed timeout to prevent infinite loading - adjusted for content load time
     const timeout = setTimeout(() => {
       setIsLoading(false);
       document.body.style.removeProperty('overflow');
-    }, 2000);
+    }, 3500);
 
     return () => {
       window.removeEventListener('load', handleLoad);

@@ -3,19 +3,29 @@
 import { Points, PointMaterial } from "@react-three/drei";
 import { Canvas, type PointsProps, useFrame } from "@react-three/fiber";
 import * as random from "maath/random";
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef, Suspense, useEffect } from "react";
 import type { Points as PointsType } from "three";
 
 export const StarBackground = (props: PointsProps) => {
   const ref = useRef<PointsType | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+  
+  // Reduce particle count on mobile for better performance
+  const particleCount = isMobile ? 1500 : 3000;
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(3000), { radius: 1.2 })
+    random.inSphere(new Float32Array(particleCount), { radius: 1.2 })
   );
 
   useFrame((_state, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+      // Reduce animation speed on mobile for smoother performance
+      const speed = isMobile ? 20 : 10;
+      ref.current.rotation.x -= delta / speed;
+      ref.current.rotation.y -= delta / (speed * 1.5);
     }
   });
 
@@ -40,12 +50,30 @@ export const StarBackground = (props: PointsProps) => {
   );
 };
 
-export const StarsCanvas = () => (
-  <div className="w-full h-auto fixed inset-0 -z-10">
-    <Canvas camera={{ position: [0, 0, 1] }}>
-      <Suspense fallback={null}>
-        <StarBackground />
-      </Suspense>
-    </Canvas>
-  </div>
-);
+export const StarsCanvas = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    // Simple mobile detection
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+  
+  // Use simpler CSS background on mobile
+  if (isMobile) {
+    return (
+      <div className="w-full h-auto fixed inset-0 -z-10" style={{
+        background: 'radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)'
+      }} />
+    );
+  }
+  
+  return (
+    <div className="w-full h-auto fixed inset-0 -z-10">
+      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]} performance={{ min: 0.5 }}>
+        <Suspense fallback={null}>
+          <StarBackground />
+        </Suspense>
+      </Canvas>
+    </div>
+  );
+};

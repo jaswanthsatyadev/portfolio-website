@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Spline from '@splinetool/react-spline/next';
@@ -12,14 +12,23 @@ const myLinks = [
 ];
 
 export const Footer = () => {
+  const [shouldLoadSpline, setShouldLoadSpline] = useState(true);
+  
+  useEffect(() => {
+    // Only disable on mobile
+    setShouldLoadSpline(window.innerWidth >= 768);
+  }, []);
+  
   return (
     <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-4 md:p-8 relative mt-32 sm:mt-48 md:mt-64">
       {/* **THE FIX:** The UFO container now has overflow-hidden to crop the logo */}
-      <div className="w-full absolute -top-[250px] sm:-top-[350px] md:-top-[450px] left-0 z-10 h-[500px] sm:h-[650px] md:h-[800px] overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[110%]">
-            <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
+      {shouldLoadSpline && (
+        <div className="w-full absolute -top-[250px] sm:-top-[350px] md:-top-[450px] left-0 z-10 h-[500px] sm:h-[650px] md:h-[800px] overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-[110%]">
+              <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="relative z-20 w-full flex flex-col items-center justify-center m-auto px-4 sm:px-6">
         <div className="w-full h-full flex flex-col md:flex-row items-center justify-around flex-wrap gap-6 md:gap-0">

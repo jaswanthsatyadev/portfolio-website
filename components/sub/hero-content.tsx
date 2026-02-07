@@ -1,26 +1,40 @@
 "use client";
 
 import Spline from '@splinetool/react-spline/next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const HeroContent = ({ onLoad }: { onLoad?: () => void }) => {
+  const [hasError, setHasError] = useState(false);
+  
   useEffect(() => {
-    // Fallback in case Spline doesn't call onLoad
+    // Shorter fallback timeout
     const timeout = setTimeout(() => {
       if (onLoad) onLoad();
-    }, 3000);
+    }, 2000);
     
     return () => clearTimeout(timeout);
   }, [onLoad]);
+  
+  if (hasError) {
+    // Fallback content for errors
+    if (onLoad) onLoad();
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="text-6xl">🤖</div>
+      </div>
+    );
+  }
 
   return (
-    // **THE FIX:** The outer container acts as a frame to crop the content.
     <div className="w-full h-full relative overflow-hidden">
-      {/* The Spline component is now absolutely positioned inside the frame */}
       <div className="absolute top-0 left-0 w-full h-[110%]">
         <Spline
           scene="https://prod.spline.design/bBhlEoaOEcVn6tGT/scene.splinecode"
           onLoad={onLoad}
+          onError={() => {
+            setHasError(true);
+            if (onLoad) onLoad();
+          }}
         />
       </div>
     </div>

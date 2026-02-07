@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -15,17 +15,31 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard = ({ src, title, description, link, tags }: ProjectCardProps) => {
+  const [enableTilt, setEnableTilt] = useState(true);
+  
+  useEffect(() => {
+    // Disable tilt on mobile or low-end devices
+    const isMobile = window.innerWidth < 768;
+    const isLowEnd = navigator.hardwareConcurrency <= 4;
+    setEnableTilt(!isMobile && !isLowEnd);
+  }, []);
+  
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
     animate: { y: 0, opacity: 1 },
   };
 
-  const tiltOptions = {
+  const tiltOptions = enableTilt ? {
     max: 15,
     scale: 1.02,
     speed: 500,
     glare: true,
     "max-glare": 0.2,
+  } : {
+    max: 0,
+    scale: 1,
+    speed: 0,
+    glare: false,
   };
 
   return (
@@ -54,6 +68,7 @@ export const ProjectCard = ({ src, title, description, link, tags }: ProjectCard
               width={1000}
               height={1000}
               className="w-full h-auto rounded-md object-cover"
+              loading="lazy"
             />
 
             <div className="relative mt-4">

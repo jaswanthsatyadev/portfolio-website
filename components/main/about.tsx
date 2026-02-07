@@ -30,6 +30,7 @@ const About = () => {
                 fill
                 style={{ objectFit: 'contain' }}
                 className="rounded-xl"
+                priority
               />
             </div>
           </div>

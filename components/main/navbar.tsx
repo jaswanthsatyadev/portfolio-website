@@ -10,6 +10,17 @@ import GitHubIcon from "../icons/GitHubIcon";   // Import your GitHubIcon compon
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
+
   return (
     <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001427] backdrop-blur-md z-50 px-4 sm:px-6 md:px-10">
       {/* Navbar Container */}
@@ -37,20 +48,21 @@ export const Navbar = () => {
               <Link
                 key={link.title}
                 href={link.link}
+                onClick={(e) => handleNavClick(e, link.link)}
                 className="cursor-pointer hover:text-[rgb(112,66,248)] transition"
               >
                 {link.title}
               </Link>
             ))}
 
-            {/* Source Code */}
+            {/* Buy me a coffee */}
             <Link
-              href={LINKS.sourceCode}
+              href={LINKS.buyCoffee}
               target="_blank"
               rel="noreferrer noopener"
-              className="cursor-pointer hover:text-[rgb(112,66,248)] transition"
+              className="cursor-pointer hover:text-[rgb(112,66,248)] transition whitespace-nowrap"
             >
-              Source Code
+              ☕ Coffee
             </Link>
           </div>
         </div>
@@ -88,20 +100,20 @@ export const Navbar = () => {
               <Link
                 key={link.title}
                 href={link.link}
+                onClick={(e) => handleNavClick(e, link.link)}
                 className="cursor-pointer hover:text-[rgb(112,66,248)] transition text-center"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.title}
               </Link>
             ))}
             <Link
-              href={LINKS.sourceCode}
+              href={LINKS.buyCoffee}
               target="_blank"
               rel="noreferrer noopener"
               className="cursor-pointer hover:text-[rgb(112,66,248)] transition text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Source Code
+              ☕ Buy me a coffee
             </Link>
           </div>
 

@@ -4,6 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration for animations */
+@layer utilities {
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
 .cursive {
   font-family: "Cedarville Cursive", cursive;
 }
@@ -98,6 +113,24 @@ html {
   }
   .animate-scroll-right {
     animation: scroll-right 40s linear infinite;
+  }
+}
+
+/* Reduced motion support for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-scroll-left,
+  .animate-scroll-right,
+  .animate-float {
+    animation: none !important;
   }
 }
 /* --- Sleek Rotating Neon Border for Glass Cards --- */

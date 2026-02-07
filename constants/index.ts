@@ -331,4 +331,5 @@ export const NAV_LINKS = [
 
 export const LINKS = {
   sourceCode: "https://github.com/jaswanthsatyadev/MyPortfolio?tab=readme-ov-file",
+  buyCoffee: "https://razorpay.me/@jaswanthsatyadev",
 } as const;

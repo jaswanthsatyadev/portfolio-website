@@ -72,6 +72,14 @@ const HeroText = () => (
       <Typewriter />
     </motion.div>
     <motion.a
+      href="#about-me"
+      onClick={(e) => {
+        e.preventDefault();
+        const element = document.querySelector('#about-me');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }}
       variants={slideInFromLeft(1)}
       className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px] mx-auto lg:mx-0"
     >
@@ -92,6 +100,8 @@ export const Hero = () => {
           autoPlay
           muted
           loop
+          playsInline
+          preload="metadata"
           className="rotate-180 absolute top-[-280px] md:top-[-320px] lg:top-[-350px] xl:top-[-380px] 2xl:top-[-400px] left-0 w-full h-full object-cover -z-10"
         >
           <source src="/videos/blackhole.webm" type="video/webm" />
