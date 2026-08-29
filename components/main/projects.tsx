@@ -30,6 +30,7 @@ export const Projects = () => {
             description={project.description}
             link={project.link}
             tags={project.tags}
+            subLinks={"subLinks" in project ? (project.subLinks as any) : undefined}
           />
         ))}
       </div>

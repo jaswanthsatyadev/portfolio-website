@@ -1,9 +1,8 @@
 import About from "@/components/main/about";
-import { Encryption } from "@/components/main/encryption";
-
 import { Hero } from "@/components/main/hero";
 import { Projects } from "@/components/main/projects";
-import { Skills }from "@/components/main/skills";
+import { Skills } from "@/components/main/skills";
+import { RemotionSection } from "@/components/main/remotion-section";
 
 export default function Home() {
   return (
@@ -12,9 +11,8 @@ export default function Home() {
         <Hero />
         <Skills />
         <About />
-        <Encryption />
+        <RemotionSection />
         <Projects />
-
       </div>
     </main>
   );

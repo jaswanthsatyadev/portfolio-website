@@ -182,6 +182,14 @@ export const PROJECTS = [
     tags: ["supabase", "Next.js", "razorpay", "borzo","wallet & refferal implementations"],
   },
   {
+    title: "FakeCall: Celebrity Prank Call ",
+    image: "/projects/project12.png",
+    description:
+      "Prank your friends with lifelike fake calls! FakeCall makes it seem like you're getting calls from celebrities. With realistic ringtones, animations, and call screens, you can create hilarious moments with ease.",
+    link: "https://play.google.com/store/apps/details?id=com.evolvarc.fakecall",
+    tags: ["Firebase", "Android", "kotlin","Android Jetpack Compose"]
+  },  
+  {
     title: "Textpilot",
     image: "/projects/project11.png",
     description:
@@ -198,29 +206,28 @@ export const PROJECTS = [
     tags: ["Genkit", "Next.js", "Firebase", "Gemini"],
   },
   {
-    title: "AutoFare - Bus Booking System",
+    title: "AutoFare - AI Bus Transit System",
     image: "/projects/project2.png",
     description:
-      "A smart ticket verification system leveraging real-time facial recognition. It eliminates fare evasion and speeds up boarding by verifying passenger selfies against CCTV frames, optimizing public transport efficiency.",
+      "A smart ticket verification and transit booking system leveraging real-time facial recognition. It eliminates fare evasion and speeds up boarding by verifying passenger selfies against CCTV frames using face-api.js.",
     link: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
-    tags: ["API", "Next.js", "MongoDB", "Typescript"],
-  },
-  {
-    title: "AutoFare - AI Backend",
-    image: "/projects/project3.png",
-    description:
-      "The high-performance engine behind AutoFare. It processes real-time face verification between passenger selfies and CCTV snapshots using face-api.js, ensuring scalable and secure authentication for mass transit.",
-    link: "https://auto-fare.vercel.app/",
-    tags: ["Node.js", "Face Recognition", "Genkit", "MongoDB"],
-
-  },
-  {
-    title: "AI Learning Hub",
-    image: "/projects/project4.png",
-    description:
-      "A personalized, AI-driven learning platform that curates smart roadmaps for mastering AI, ML, and Data Science. It cuts through the noise to provide a direct, efficient path to upskilling.",
-    link: "https://ai-learing-hub.netlify.app/",
-    tags: ["Next.js", "llama", "HuggingFace", "Supabase"],
+    subLinks: [
+      {
+        label: "Bus Booking App (Frontend)",
+        url: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
+        icon: "🌐",
+        description: "Passenger ticket booking portal with secure auth & transit dashboard",
+        badge: "Next.js • Transit UI",
+      },
+      {
+        label: "Face Engine (AI Backend)",
+        url: "https://auto-fare.vercel.app/",
+        icon: "⚡",
+        description: "Real-time facial verification engine cross-matching passenger selfies & CCTV",
+        badge: "face-api.js • Node.js",
+      },
+    ],
+    tags: ["Face Recognition", "Next.js", "Node.js", "Genkit", "MongoDB"],
   },
   {
     title: "Sanctuary Sphere",
@@ -230,15 +237,6 @@ export const PROJECTS = [
     link: "https://sanctuary-sphere.vercel.app/",
     tags: [ "HTML", "CSS", "Spline"],
   },
-  // {
-  //   title: "AutoTestGenie",
-  //   image: "",
-  //   description:
-  //     "This website is made for testers to generate selenium and pytest code instantly which modern AI chat bots fail to achive.",
-  //   link: "",
-  //   tags: [ "ReactJS", "FastAPI", "TailwindCSS"],
-
-  // },
   {
     title: "Steel Of Shadows",
     image: "/projects/project6.png",
@@ -350,6 +348,10 @@ export const NAV_LINKS = [
   {
     title: "Skills",
     link: "#skills",
+  },
+  {
+    title: "Engine",
+    link: "#remotion-engine",
   },
   {
     title: "Projects",

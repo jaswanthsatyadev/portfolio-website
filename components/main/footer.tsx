@@ -79,7 +79,7 @@ export const Footer = () => {
           {/* 3D UFO Canvas */}
           {!hasUfoError && (
             <div
-              className={`w-full absolute -top-[250px] sm:-top-[350px] md:-top-[450px] left-0 z-10 h-[500px] sm:h-[650px] md:h-[800px] overflow-hidden pointer-events-none transition-opacity duration-700 ${
+              className={`w-full absolute -top-[250px] sm:-top-[350px] md:-top-[450px] left-0 z-10 h-[500px] sm:h-[650px] md:h-[800px] overflow-hidden pointer-events-auto transition-opacity duration-700 ${
                 isUfoLoaded ? "opacity-100" : "opacity-0"
               }`}
             >

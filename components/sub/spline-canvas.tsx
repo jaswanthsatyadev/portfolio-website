@@ -58,6 +58,33 @@ export default function SplineCanvas({
     };
   }, [scene, onLoad, onError]);
 
+  // Global cursor tracking bridge so UFO tracks mouse across the entire window
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const handleGlobalPointerMove = (e: PointerEvent) => {
+      // Forward pointer events to canvas if pointer is elsewhere in the window
+      const target = document.elementFromPoint(e.clientX, e.clientY);
+      if (target !== canvas) {
+        const syntheticEvent = new PointerEvent("pointermove", {
+          clientX: e.clientX,
+          clientY: e.clientY,
+          screenX: e.screenX,
+          screenY: e.screenY,
+          bubbles: true,
+          cancelable: true,
+        });
+        canvas.dispatchEvent(syntheticEvent);
+      }
+    };
+
+    window.addEventListener("pointermove", handleGlobalPointerMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", handleGlobalPointerMove);
+    };
+  }, []);
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <canvas
