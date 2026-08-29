@@ -162,6 +162,22 @@ export const SOCIALS = [
 // Projects Data
 export const PROJECTS = [
   {
+    title: "MrCakeWala",
+    image: "/projects/project10.png",
+    description:
+      "An Cake ordering and delivery system with end to end integrations such as payment gateway, delivery tracking, admin panel, refferal system, wallet and money managment",
+    link: "https://app.mrcakewala.com/",
+    tags: ["supabase", "Next.js", "razorpay", "borzo","wallet & refferal implementations"],
+  },
+  {
+    title: "Textpilot",
+    image: "/projects/project11.png",
+    description:
+      "TextPilot is a powerful system-wide AI text assistant that works across all your apps. Whether you're chatting, emailing, posting, or taking notes — TextPilot upgrades your writing instantly, without switching apps or copying text.",
+    link: "https://play.google.com/store/apps/details?id=com.evolvarc.textpilot",
+    tags: ["Android", "Kotlin", "Android Jetpack Compose", "SQLite", "system-wide AI assistant","Genkit"],
+  },  
+  {
     title: "MediMate AI",
     image: "/projects/project1.png",
     description:

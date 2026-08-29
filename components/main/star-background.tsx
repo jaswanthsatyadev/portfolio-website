@@ -8,24 +8,14 @@ import type { Points as PointsType } from "three";
 
 export const StarBackground = (props: PointsProps) => {
   const ref = useRef<PointsType | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-  
-  // Reduce particle count on mobile for better performance
-  const particleCount = isMobile ? 1500 : 3000;
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(particleCount), { radius: 1.2 })
+    random.inSphere(new Float32Array(2500), { radius: 1.2 })
   );
 
   useFrame((_state, delta) => {
     if (ref.current) {
-      // Reduce animation speed on mobile for smoother performance
-      const speed = isMobile ? 20 : 10;
-      ref.current.rotation.x -= delta / speed;
-      ref.current.rotation.y -= delta / (speed * 1.5);
+      ref.current.rotation.x -= delta / 15;
+      ref.current.rotation.y -= delta / 20;
     }
   });
 
@@ -52,24 +42,32 @@ export const StarBackground = (props: PointsProps) => {
 
 export const StarsCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
-    // Simple mobile detection
+    setMounted(true);
     setIsMobile(window.innerWidth < 768);
   }, []);
   
-  // Use simpler CSS background on mobile
-  if (isMobile) {
+  if (!mounted || isMobile) {
     return (
-      <div className="w-full h-auto fixed inset-0 -z-10" style={{
-        background: 'radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)'
-      }} />
+      <div
+        className="w-full h-full fixed inset-0 -z-10 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at bottom, #110d28 0%, #030014 100%)'
+        }}
+      />
     );
   }
   
   return (
-    <div className="w-full h-auto fixed inset-0 -z-10">
-      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]} performance={{ min: 0.5 }}>
+    <div className="w-full h-full fixed inset-0 -z-10 pointer-events-none">
+      <Canvas
+        camera={{ position: [0, 0, 1] }}
+        dpr={[1, 1.2]}
+        gl={{ antialias: false, powerPreference: "high-performance" }}
+        performance={{ min: 0.5 }}
+      >
         <Suspense fallback={null}>
           <StarBackground />
         </Suspense>

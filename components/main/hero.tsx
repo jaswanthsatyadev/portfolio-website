@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
@@ -11,7 +11,6 @@ import {
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { Typewriter } from "../sub/Typewriter";
 
-// Custom Hook to detect if the user is on a mobile device
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -29,72 +28,85 @@ const HeroContent = dynamic(
   () => import("../sub/hero-content").then((mod) => mod.HeroContent),
   {
     ssr: false,
-    loading: () => <LoadingSpinner />,
+    loading: () => <LoadingPlaceholder />,
   }
 );
 
-const LoadingSpinner = () => (
-  <div className="w-full h-full flex justify-center items-center">
-    <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-white"></div>
+const LoadingPlaceholder = () => (
+  <div className="w-full h-full flex flex-col justify-center items-center gap-3">
+    <div className="w-12 h-12 border-2 border-t-purple-500 border-r-cyan-400 border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+    <span className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase">Loading 3D Interface...</span>
   </div>
 );
 
-// The HeroText component with its slide-in animations
 const HeroText = () => (
   <motion.div
     initial="hidden"
     animate="visible"
-    className="h-full w-full flex flex-col gap-5 justify-center m-auto text-center lg:text-start"
+    className="h-full w-full flex flex-col gap-4 sm:gap-5 justify-center m-auto text-center lg:text-start"
   >
     <motion.div variants={slideInFromTop}>
-      <div className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9] mx-auto lg:mx-0">
-        <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
-        <h1 className="Welcome-text text-[13px]">
-          Fullstack Developer Portfolio
+      <div className="Welcome-box py-[6px] px-[12px] border border-[#7042f88b] opacity-[0.95] mx-auto lg:mx-0">
+        <SparklesIcon className="text-[#b49bff] mr-[8px] h-4 w-4 sm:h-5 sm:w-5 inline" />
+        <h1 className="Welcome-text text-[12px] sm:text-[13px] font-medium tracking-wide">
+          Fullstack Developer & AI Engineer
         </h1>
       </div>
     </motion.div>
+
     <motion.div
-      variants={slideInFromLeft(0.5)}
-      className="flex flex-col gap-6 mt-6 text-4xl md:text-6xl font-bold text-white max-w-[600px] w-auto h-auto"
+      variants={slideInFromLeft(0.4)}
+      className="flex flex-col gap-2 mt-2 sm:mt-4 text-3xl sm:text-5xl lg:text-6xl font-bold text-white max-w-[650px] w-auto leading-tight"
     >
       <span>
-        Hi, I&apos;m
-        <div>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-            {" "}
-            Satya - Dev{" "}
-          </span>
-        </div>
+        Hi, I&apos;m{" "}
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+          Satya Dev
+        </span>
       </span>
     </motion.div>
-    <motion.div variants={slideInFromLeft(0.8)}>
+
+    <motion.div variants={slideInFromLeft(0.6)}>
       <Typewriter />
     </motion.div>
-    <motion.a
-      href="#about-me"
-      onClick={(e) => {
-        e.preventDefault();
-        const element = document.querySelector('#about-me');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }}
-      variants={slideInFromLeft(1)}
-      className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px] mx-auto lg:mx-0"
-    >
-      Learn More!
-    </motion.a>
+
+    <motion.div variants={slideInFromLeft(0.8)} className="flex flex-wrap gap-4 justify-center lg:justify-start mt-2">
+      <a
+        href="#projects"
+        onClick={(e) => {
+          e.preventDefault();
+          const element = document.querySelector('#projects');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }}
+        className="py-2.5 px-6 button-primary text-center text-white text-sm sm:text-base font-medium cursor-pointer rounded-xl transition-all shadow-lg hover:shadow-purple-500/25"
+      >
+        Explore Projects ✨
+      </a>
+      <a
+        href="#about-me"
+        onClick={(e) => {
+          e.preventDefault();
+          const element = document.querySelector('#about-me');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }}
+        className="py-2.5 px-6 border border-cyan-500/30 hover:border-cyan-400/60 bg-cyan-950/20 hover:bg-cyan-900/30 text-center text-cyan-300 text-sm sm:text-base font-medium cursor-pointer rounded-xl transition-all"
+      >
+        About Me
+      </a>
+    </motion.div>
   </motion.div>
 );
 
-// The main Hero component
 export const Hero = () => {
   const isMobile = useIsMobile();
   const [isSplineLoaded, setIsSplineLoaded] = useState(false);
 
   return (
-    <section className="relative flex flex-col min-h-screen w-full overflow-hidden" id="home">
+    <section className="relative flex flex-col justify-center min-h-[92vh] sm:min-h-screen w-full overflow-hidden" id="home">
       {!isMobile && (
         <video
           autoPlay
@@ -102,26 +114,23 @@ export const Hero = () => {
           loop
           playsInline
           preload="metadata"
-          className="rotate-180 absolute top-[-280px] md:top-[-320px] lg:top-[-350px] xl:top-[-380px] 2xl:top-[-400px] left-0 w-full h-full object-cover -z-10"
+          className="rotate-180 absolute top-[-260px] md:top-[-300px] lg:top-[-340px] xl:top-[-370px] left-0 w-full h-full object-cover -z-10 pointer-events-none opacity-80"
         >
           <source src="/videos/blackhole.webm" type="video/webm" />
         </video>
       )}
 
-      <div className="relative flex items-center justify-center w-full h-full z-[20] pt-[100px] sm:pt-[120px] md:pt-[100px] lg:pt-[80px]">
-        <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-4 sm:px-6 md:px-10">
+      <div className="relative flex items-center justify-center w-full h-full z-[20] pt-[85px] sm:pt-[100px] md:pt-[110px] pb-8 sm:pb-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-4 sm:px-6 md:px-10 gap-8 lg:gap-4">
           <div className="w-full lg:w-1/2">
             <HeroText />
           </div>
-          <div className="w-full lg:w-1/2 h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] mt-6 lg:mt-0">
-            {/* **THE FIX:** The animation is now directly controlled by the loading state */}
-            {!isSplineLoaded && <LoadingSpinner />}
+          <div className="w-full lg:w-1/2 h-[300px] sm:h-[420px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
             <motion.div
               initial="hidden"
-              animate={isSplineLoaded ? "visible" : "hidden"}
-              variants={slideInFromRight(0.8)}
+              animate="visible"
+              variants={slideInFromRight(0.5)}
               className="w-full h-full"
-              style={{ display: isSplineLoaded ? 'block' : 'none' }}
             >
               <HeroContent onLoad={() => setIsSplineLoaded(true)} />
             </motion.div>

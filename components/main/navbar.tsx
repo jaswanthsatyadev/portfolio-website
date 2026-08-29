@@ -3,9 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { LINKS, NAV_LINKS, SOCIALS } from "@/constants";
-import LinkedInIcon from "../icons/LinkedInIcon"; // Import your LinkedInIcon component
-import GitHubIcon from "../icons/GitHubIcon";   // Import your GitHubIcon component
-
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,117 +20,143 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001427] backdrop-blur-md z-50 px-4 sm:px-6 md:px-10">
+    <nav className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/30 bg-[#030014]/60 backdrop-blur-md z-50 px-4 sm:px-6 md:px-10 border-b border-purple-900/20">
       {/* Navbar Container */}
-      <div className="w-full h-full flex items-center justify-between m-auto px-0 sm:px-[10px]">
+      <div className="w-full h-full max-w-7xl flex items-center justify-between m-auto">
         {/* Logo + Name */}
         <Link
           href="#home"
-          className="flex items-center"
+          onClick={(e) => handleNavClick(e, '#home')}
+          className="flex items-center gap-2 group"
         >
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={50}
-            height={50}
-            draggable={false}
-            className="cursor-pointer rounded-full"
-          />
-          <div className="hidden md:flex md:selffont-bold ml-[10px] text-gray-300">Satya Dev</div>
+          <div className="w-10 h-10 rounded-full overflow-hidden border border-purple-500/40 p-0.5 group-hover:border-cyan-400 transition-colors flex-shrink-0 flex items-center justify-center">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={40}
+              height={40}
+              priority
+              className="w-full h-full object-cover rounded-full"
+            />
+          </div>
+          <span className="font-bold text-gray-200 group-hover:text-white transition-colors tracking-wide text-sm sm:text-base">
+            Satya Dev
+          </span>
         </Link>
 
-        {/* Web Navbar */}
-        <div className="hidden md:flex w-[500px] h-full flex-row items-center justify-between md:mr-20">
-          <div className="flex items-center justify-between w-full h-auto border-[rgba(112,66,248,0.38)] bg-[rgba(3,0,20,0.37)] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex items-center justify-center">
+          <div className="flex items-center gap-8 border border-[rgba(112,66,248,0.38)] bg-[rgba(3,0,20,0.5)] px-6 py-2 rounded-full text-gray-300 text-sm backdrop-blur-sm">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.title}
                 href={link.link}
                 onClick={(e) => handleNavClick(e, link.link)}
-                className="cursor-pointer hover:text-[rgb(112,66,248)] transition"
+                className="cursor-pointer hover:text-cyan-300 transition-colors"
               >
                 {link.title}
               </Link>
             ))}
 
-            {/* Buy me a coffee */}
             <Link
               href={LINKS.buyCoffee}
               target="_blank"
               rel="noreferrer noopener"
-              className="cursor-pointer hover:text-[rgb(112,66,248)] transition whitespace-nowrap"
+              className="cursor-pointer hover:text-purple-300 transition-colors whitespace-nowrap text-cyan-400"
             >
               ☕ Coffee
             </Link>
           </div>
         </div>
 
-        {/* Social Icons (Web) */}
-        <div className="hidden md:flex flex-row gap-5">
+        {/* Social Icons (Desktop) */}
+        <div className="hidden md:flex flex-row items-center gap-4">
           {SOCIALS.map(({ link, name, icon: Icon }) => (
             <Link
               href={link}
               target="_blank"
               rel="noreferrer noopener"
               key={name}
+              aria-label={name}
+              className="text-gray-400 hover:text-white transition-colors p-1"
             >
-              {/* Render the icon component directly */}
-              <Icon className="h-6 w-6 text-white" />
+              <Icon className="h-5 w-5" />
             </Link>
           ))}
         </div>
 
-        {/* Hamburger Menu */}
+        {/* Mobile Hamburger Button */}
         <button
-          className="md:hidden text-white focus:outline-none text-4xl"
+          aria-label="Toggle navigation menu"
+          className="md:hidden text-gray-200 hover:text-white p-2 text-2xl focus:outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          ☰
+          {isMobileMenuOpen ? "✕" : "☰"}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-[65px] left-0 w-full bg-[#030014]/95 backdrop-blur-md p-5 flex flex-col items-center text-gray-300 md:hidden shadow-lg shadow-[#2A0E61]/50">
-          {/* Links */}
-          <div className="flex flex-col items-center gap-4">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.title}
-                href={link.link}
-                onClick={(e) => handleNavClick(e, link.link)}
-                className="cursor-pointer hover:text-[rgb(112,66,248)] transition text-center"
-              >
-                {link.title}
-              </Link>
-            ))}
-            <Link
-              href={LINKS.buyCoffee}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="cursor-pointer hover:text-[rgb(112,66,248)] transition text-center"
+      {/* Mobile Drawer Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 top-[65px] bg-black/60 backdrop-blur-sm md:hidden z-40"
+            />
+            
+            {/* Menu Dropdown */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-[65px] left-0 w-full bg-[#030014]/95 backdrop-blur-xl border-b border-purple-900/40 p-6 flex flex-col items-center text-gray-200 md:hidden shadow-2xl z-50"
             >
-              ☕ Buy me a coffee
-            </Link>
-          </div>
+              <div className="flex flex-col items-center gap-5 w-full">
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.title}
+                    href={link.link}
+                    onClick={(e) => handleNavClick(e, link.link)}
+                    className="w-full text-center py-2 text-base font-medium hover:text-cyan-300 border-b border-gray-800/50"
+                  >
+                    {link.title}
+                  </Link>
+                ))}
+                <Link
+                  href={LINKS.buyCoffee}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="w-full text-center py-2 text-base font-medium text-cyan-400 hover:text-cyan-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  ☕ Buy me a coffee
+                </Link>
+              </div>
 
-          {/* Social Icons */}
-          <div className="flex justify-center gap-6 mt-6">
-            {SOCIALS.map(({ link, name, icon: Icon }) => (
-              <Link
-                href={link}
-                target="_blank"
-                rel="noreferrer noopener"
-                key={name}
-              >
-                 {/* Render the icon component directly */}
-                <Icon className="h-6 w-6 text-white" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+              {/* Mobile Social Icons */}
+              <div className="flex justify-center gap-8 mt-6 pt-4 border-t border-gray-800/60 w-full">
+                {SOCIALS.map(({ link, name, icon: Icon }) => (
+                  <Link
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    key={name}
+                    aria-label={name}
+                    className="p-2 text-gray-300 hover:text-white"
+                  >
+                    <Icon className="h-6 w-6" />
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };

@@ -7,33 +7,12 @@ export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Prevent scrolling while loading
-    document.body.style.overflow = 'hidden';
-
-    const handleLoad = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        document.body.style.removeProperty('overflow');
-      }, 300);
-    };
-
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-    }
-
-    // Guaranteed timeout to prevent infinite loading - adjusted for content load time
-    const timeout = setTimeout(() => {
+    // Quick exit after initial hydration so users can interact immediately
+    const timer = setTimeout(() => {
       setIsLoading(false);
-      document.body.style.removeProperty('overflow');
-    }, 3500);
+    }, 600);
 
-    return () => {
-      window.removeEventListener('load', handleLoad);
-      clearTimeout(timeout);
-      document.body.style.removeProperty('overflow');
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -42,8 +21,8 @@ export default function LoadingScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 bg-[#030014] z-[999] flex flex-col items-center justify-center"
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="fixed inset-0 bg-[#030014] z-[999] flex flex-col items-center justify-center pointer-events-none"
         >
           <div className="relative flex items-center justify-center">
             <motion.div
@@ -57,12 +36,12 @@ export default function LoadingScreen() {
               className="w-16 h-16 border-4 border-transparent border-l-purple-500 border-b-cyan-500 rounded-full absolute"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className="text-gray-200 text-sm font-light tracking-[0.2em] z-10"
             >
-              LOADING
+              INITIALIZING
             </motion.div>
           </div>
         </motion.div>
