@@ -4,14 +4,20 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import SplineCanvas from "@/components/sub/spline-canvas";
 import { useInView } from "react-intersection-observer";
+import { motion, AnimatePresence } from "framer-motion";
 
 const myLinks = [
   { name: "LinkedIn", url: "https://www.linkedin.com/in/jaswanth-satya-dev/" },
   { name: "GitHub", url: "https://github.com/jaswanthsatyadev" },
+  { name: "Twitter / X", url: "https://x.com/jaswanthsatydev" },
+  { name: "Instagram", url: "https://www.instagram.com/jaswanthsatyadev/" },
 ];
 
 export const Footer = () => {
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isUfoLoaded, setIsUfoLoaded] = useState(false);
+  const [hasUfoError, setHasUfoError] = useState(false);
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     rootMargin: "300px",
@@ -20,19 +26,76 @@ export const Footer = () => {
   useEffect(() => {
     setIsDesktop(window.innerWidth >= 768);
   }, []);
+
+  useEffect(() => {
+    // Graceful fallback timeout so slow networks do not hang indefinitely
+    if (inView && isDesktop) {
+      const timeout = setTimeout(() => {
+        setIsUfoLoaded(true);
+      }, 3500);
+      return () => clearTimeout(timeout);
+    }
+  }, [inView, isDesktop]);
   
   return (
     <footer
       ref={ref}
       className="w-full bg-transparent text-gray-200 shadow-lg p-4 sm:p-6 md:p-10 relative mt-32 sm:mt-48 md:mt-64 z-30"
     >
-      {/* 3D UFO: Loaded only when scrolled near footer on desktop */}
+      {/* 3D UFO & Loading State: Loaded only when scrolled near footer on desktop */}
       {isDesktop && inView && (
-        <div className="w-full absolute -top-[250px] sm:-top-[350px] md:-top-[450px] left-0 z-10 h-[500px] sm:h-[650px] md:h-[800px] overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-[110%]">
-            <SplineCanvas scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
-          </div>
-        </div>
+        <>
+          {/* Futuristic Loading State while 3D UFO initializes */}
+          <AnimatePresence>
+            {!isUfoLoaded && !hasUfoError && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                className="w-full absolute -top-[120px] sm:-top-[160px] md:-top-[200px] left-0 z-10 flex flex-col items-center justify-center pointer-events-none"
+              >
+                <div className="relative flex items-center justify-center">
+                  <motion.div
+                    animate={{ rotate: 360, scale: [1, 1.06, 1] }}
+                    transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-dashed border-cyan-400/40"
+                  />
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-t-purple-500 border-r-cyan-400 border-b-transparent border-l-transparent absolute"
+                  />
+                  <div className="absolute text-2xl sm:text-3xl select-none filter drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]">
+                    🛸
+                  </div>
+                </div>
+                <span className="mt-3 text-xs font-mono tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 animate-pulse">
+                  Transmitting Signal... Please wait
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* 3D UFO Canvas */}
+          {!hasUfoError && (
+            <div
+              className={`w-full absolute -top-[250px] sm:-top-[350px] md:-top-[450px] left-0 z-10 h-[500px] sm:h-[650px] md:h-[800px] overflow-hidden pointer-events-none transition-opacity duration-700 ${
+                isUfoLoaded ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <div className="absolute top-0 left-0 w-full h-[110%]">
+                <SplineCanvas
+                  scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode"
+                  onLoad={() => setIsUfoLoaded(true)}
+                  onError={() => {
+                    setHasUfoError(true);
+                    setIsUfoLoaded(true);
+                  }}
+                />
+              </div>
+            </div>
+          )}
+        </>
       )}
 
       <div className="relative z-20 w-full max-w-7xl flex flex-col items-center justify-center m-auto px-4 sm:px-6">

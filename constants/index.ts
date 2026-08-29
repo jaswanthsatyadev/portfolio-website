@@ -9,6 +9,8 @@ import {
 
 import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import GitHubIcon from "@/components/icons/GitHubIcon";
+import TwitterIcon from "@/components/icons/TwitterIcon";
+import InstagramIcon from "@/components/icons/InstagramIcon";
 
 export const ALL_SKILLS = [
   {
@@ -155,6 +157,16 @@ export const SOCIALS = [
     name: "GitHub",
     icon: GitHubIcon,
     link: "https://github.com/jaswanthsatyadev",
+  },
+  {
+    name: "Twitter",
+    icon: TwitterIcon,
+    link: "https://x.com/jaswanthsatydev",
+  },
+  {
+    name: "Instagram",
+    icon: InstagramIcon,
+    link: "https://www.instagram.com/jaswanthsatyadev/",
   },
 ] as const;
 
