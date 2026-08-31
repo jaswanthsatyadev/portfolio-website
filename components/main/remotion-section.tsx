@@ -1,36 +1,14 @@
 "use client";
 
 import React from "react";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
-const RemotionShowcase = dynamic(
-  () => import("@/components/remotion/RemotionShowcase").then((mod) => mod.RemotionShowcase),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full max-w-5xl aspect-video mx-auto bg-gray-950/80 border border-purple-500/20 rounded-2xl flex flex-col items-center justify-center gap-3">
-        <div className="w-12 h-12 rounded-full border-2 border-t-purple-500 border-r-cyan-400 border-b-transparent border-l-transparent animate-spin" />
-        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
-          Initializing Builder Reel...
-        </span>
-      </div>
-    ),
-  }
-);
+import { RemotionShowcase } from "@/components/remotion/RemotionShowcase";
 
 export const RemotionSection: React.FC = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    rootMargin: "250px",
-  });
-
   return (
     <section
-      ref={ref}
       id="remotion-engine"
-      className="flex flex-col items-center justify-center py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-20 w-full"
+      className="flex flex-col items-center justify-center py-12 sm:py-16 md:py-24 px-4 sm:px-6 relative z-20 w-full"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-purple-900/20 blur-[130px] rounded-full pointer-events-none -z-10" />
@@ -46,7 +24,7 @@ export const RemotionSection: React.FC = () => {
         >
           <span>🎬 INTERACTIVE STORY REEL</span>
           <span>•</span>
-          <span className="text-cyan-400">BUILT WITH REMOTION.DEV</span>
+          <span className="text-cyan-400">SATYA DEV OS</span>
         </motion.div>
 
         <motion.h2
@@ -66,13 +44,13 @@ export const RemotionSection: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-sm sm:text-base text-gray-400 mt-2 font-mono leading-relaxed"
         >
-          Explore my journey, shipped apps under Evolvarc, AI tech stack, and network metrics rendered programmatically in React.
+          Explore my journey, shipped apps under Evolvarc, AI tech stack, and network metrics rendered in real-time.
         </motion.p>
       </div>
 
-      {/* Main Remotion Player */}
+      {/* Main Interactive Showcase */}
       <div className="w-full max-w-6xl">
-        {inView && <RemotionShowcase />}
+        <RemotionShowcase />
       </div>
     </section>
   );

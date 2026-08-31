@@ -146,10 +146,6 @@ const BuilderStoryScene: React.FC<{ frame: number; fps: number; pulse: number }>
             className="absolute -inset-2 rounded-full border border-dashed border-cyan-400/50 pointer-events-none"
           />
         </div>
-
-        <div className="mt-3 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-500/40 text-[10px] text-cyan-300 font-mono tracking-widest uppercase">
-          Evolvarc Founder
-        </div>
       </div>
 
       {/* Right: Bio & Kinetic Stats Grid */}
@@ -161,11 +157,11 @@ const BuilderStoryScene: React.FC<{ frame: number; fps: number; pulse: number }>
         className="flex-1 flex flex-col gap-4 text-center md:text-left"
       >
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300">
             Jaswanth Satya Dev
-          </h1>
+          </h2>
           <p className="text-xs sm:text-sm text-gray-300 font-mono mt-1">
-            20-Year-Old AI Engineer, Android Developer & Product Builder.
+            20-Year-Old AI Engineer, Android Developer & Product Builder • Hyderabad, IN
           </p>
         </div>
 
@@ -208,33 +204,33 @@ const EcosystemStoryScene: React.FC<{ frame: number; fps: number; pulse: number 
   const products = [
     {
       title: "TextPilot AI",
-      category: "System-Wide Android AI",
+      category: "System-Wide Android AI Assistant",
       stack: "Kotlin • Compose • Genkit",
-      metric: "Live on Play Store",
+      metric: "Play Store Live",
       icon: "🤖",
       glow: "border-cyan-400/50 shadow-[0_0_20px_rgba(6,182,212,0.3)]",
     },
     {
       title: "MrCakeWala",
-      category: "E-Commerce Delivery System",
+      category: "E-Commerce Cake Delivery & Wallet",
       stack: "Next.js • Razorpay • Supabase",
-      metric: "Real-Time Tracking",
+      metric: "Production Live",
       icon: "🎂",
       glow: "border-purple-400/50 shadow-[0_0_20px_rgba(168,85,247,0.3)]",
     },
     {
-      title: "AutoFare Transit",
-      category: "CCTV Face Recognition",
-      stack: "Next.js • face-api.js • Mongo",
-      metric: "Instant Verification",
-      icon: "🚌",
+      title: "Adskipper: Auto Skip Ads",
+      category: "Native Automation & Accessibility",
+      stack: "Kotlin • Accessibility • Automation",
+      metric: "Play Store Live",
+      icon: "⏭",
       glow: "border-pink-400/50 shadow-[0_0_20px_rgba(236,72,153,0.3)]",
     },
     {
-      title: "StockPulse News",
-      category: "Market Intelligence Hub",
+      title: "StockPulse",
+      category: "Market Intelligence News Engine",
       stack: "Flutter • Kotak Neo • Postgres",
-      metric: "Live RSS Feeds",
+      metric: "Play Store Live",
       icon: "📈",
       glow: "border-emerald-400/50 shadow-[0_0_20px_rgba(16,185,129,0.3)]",
     },
@@ -279,7 +275,7 @@ const EcosystemStoryScene: React.FC<{ frame: number; fps: number; pulse: number 
 
               <div className="flex justify-between items-center text-[9px] text-gray-400 border-t border-gray-800/60 pt-1.5 font-mono">
                 <span>{p.stack}</span>
-                <span className="text-emerald-400 font-bold">ACTIVE ●</span>
+                <span className="text-emerald-400 font-bold">ONLINE ●</span>
               </div>
             </div>
           );
@@ -295,22 +291,36 @@ const EcosystemStoryScene: React.FC<{ frame: number; fps: number; pulse: number 
 const TechDNAStoryScene: React.FC<{ frame: number; fps: number; pulse: number }> = ({
   frame,
   fps,
-  pulse,
 }) => {
   const techCategories = [
     {
       domain: "AI & INTELLIGENCE",
-      items: ["Gemini 1.5", "Genkit", "Llama Models", "Vector Embeddings"],
+      items: [
+        "Custom AI & LLM's",
+        "Chat & Voice agents",
+        "AI & Automation Integrations",
+        "ML Models fine-tuning & Rag",
+      ],
       color: "border-pink-500/40 text-pink-300 bg-pink-950/30",
     },
     {
-      domain: "MOBILE DEVELOPMENT",
-      items: ["Android (Kotlin)", "Jetpack Compose", "Flutter", "SQLite / Room"],
+      domain: "MOBILE ENGINEERING",
+      items: [
+        "Android (Kotlin) & Jetpack Compose",
+        "Flutter",
+        "Backend & Databases",
+        "AI powered Apps",
+      ],
       color: "border-cyan-500/40 text-cyan-300 bg-cyan-950/30",
     },
     {
       domain: "FULLSTACK WEB & CLOUD",
-      items: ["Next.js 14 (App Router)", "TypeScript", "Supabase & Postgres", "Razorpay / Borzo"],
+      items: [
+        "Next.js & React.js",
+        "Python FastAPI & Node.js",
+        "Supabase & Postgres",
+        "Razorpay & Borzo Integrations",
+      ],
       color: "border-purple-500/40 text-purple-300 bg-purple-950/30",
     },
   ];

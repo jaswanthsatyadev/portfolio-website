@@ -13,9 +13,9 @@ const About = () => {
       id="about-me"
       className="flex flex-col items-center justify-center gap-4 py-12 sm:py-16 md:py-20 px-4 sm:px-6 z-20"
     >
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 py-4 text-center">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 py-4 text-center">
         About Me
-      </h1>
+      </h2>
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14 max-w-6xl w-full mt-4">
         {/* Left Side: Photo with Futuristic Glowing Border */}
         <motion.div
