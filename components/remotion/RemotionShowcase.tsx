@@ -186,7 +186,7 @@ export const RemotionShowcase: React.FC = () => {
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-2">
                     <Link
-                      href="https://play.google.com/store/apps/details?id=com.evolvarc.textpilot"
+                      href="https://play.google.com/store/apps/dev?id=8851828516936708433"
                       target="_blank"
                       rel="noreferrer noopener"
                       className="p-3 rounded-xl bg-gray-950/80 border border-purple-500/30 hover:border-cyan-400/60 hover:scale-105 transition-all flex flex-col items-center justify-center shadow-lg group cursor-pointer"

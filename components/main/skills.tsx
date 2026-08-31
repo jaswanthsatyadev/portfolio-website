@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { SkillDataProvider } from "@/components/sub/skill-data-provider";
 import { SkillText } from "@/components/sub/skill-text";
 import { ALL_SKILLS } from "@/constants";
@@ -11,29 +12,29 @@ const SkillRow = ({ skills, direction }: { skills: Skill[]; direction: "left" | 
   const animationClass = direction === "left" ? "animate-scroll-left" : "animate-scroll-right";
 
   return (
-    <div className={`flex ${animationClass}`}>
-      {skills.map((skill) => (
-        <div key={skill.skill_name} className="flex-shrink-0 px-3 sm:px-5 md:px-7">
-          <SkillDataProvider
-            src={skill.image}
-            name={skill.skill_name}
-            width={skill.width}
-            height={skill.height}
-            index={0}
-          />
-        </div>
-      ))}
-      {skills.map((skill) => (
-        <div key={`${skill.skill_name}-clone`} aria-hidden="true" className="flex-shrink-0 px-3 sm:px-5 md:px-7">
-          <SkillDataProvider
-            src={skill.image}
-            name={skill.skill_name}
-            width={skill.width}
-            height={skill.height}
-            index={0}
-          />
-        </div>
-      ))}
+    <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] w-full py-1.5">
+      <div className={`flex ${animationClass} hover:[animation-play-state:paused] cursor-pointer`}>
+        {skills.map((skill) => (
+          <div key={skill.skill_name} className="flex-shrink-0 px-2.5 sm:px-4 md:px-5">
+            <SkillDataProvider
+              src={skill.image}
+              name={skill.skill_name}
+              width={skill.width}
+              height={skill.height}
+            />
+          </div>
+        ))}
+        {skills.map((skill) => (
+          <div key={`${skill.skill_name}-clone`} aria-hidden="true" className="flex-shrink-0 px-2.5 sm:px-4 md:px-5">
+            <SkillDataProvider
+              src={skill.image}
+              name={skill.skill_name}
+              width={skill.width}
+              height={skill.height}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
