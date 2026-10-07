@@ -162,6 +162,14 @@ export const SOCIALS = [
 // Projects Data
 export const PROJECTS = [
   {
+    title: "Rubin E-Commerce",
+    image: "/projects/project10.png",
+    description:
+      "An AI-powered clothing E-commerce website with Razorpay integration, delivery integration, product managment, admin panel.",
+    link: "https://rubin.evolvarc.com",
+    tags: ["Reactjs", "Razorpay", "Cloudflare", "Nextjs", "render"],
+  },
+  {
     title: "MediMate AI",
     image: "/projects/project1.png",
     description:
@@ -184,7 +192,6 @@ export const PROJECTS = [
       "The high-performance engine behind AutoFare. It processes real-time face verification between passenger selfies and CCTV snapshots using face-api.js, ensuring scalable and secure authentication for mass transit.",
     link: "https://auto-fare.vercel.app/",
     tags: ["Node.js", "Face Recognition", "Genkit", "MongoDB"],
-
   },
   {
     title: "AI Learning Hub",
@@ -200,7 +207,7 @@ export const PROJECTS = [
     description:
       "A visually immersive web experience built with pure HTML and Vanilla CSS, demonstrating that elegant design doesn't always require complex frameworks.",
     link: "https://sanctuary-sphere.vercel.app/",
-    tags: [ "HTML", "CSS", "Spline"],
+    tags: ["HTML", "CSS", "Spline"],
   },
   // {
   //   title: "AutoTestGenie",
@@ -217,8 +224,7 @@ export const PROJECTS = [
     description:
       "A 2D action game developed in Godot. It showcases object-oriented programming principles in a real-time interactive environment.",
     link: "https://xpsoft.itch.io/dungescape",
-    tags: [ "Godot", "GDScript","OOPS"]
-
+    tags: ["Godot", "GDScript", "OOPS"],
   },
   {
     title: "Adskipper: Auto Skip Ads",
@@ -226,8 +232,7 @@ export const PROJECTS = [
     description:
       "A native Android utility that automatically skips YouTube ads, saving users time and enhancing their viewing experience. A practical automation tool available on the Play Store.",
     link: "https://play.google.com/store/apps/details?id=com.evolvarc.adskipper",
-    tags: [ "Kotlin", "Android Development","Accessibility"]
-
+    tags: ["Kotlin", "Android Development", "Accessibility"],
   },
   {
     title: "Stockpulse: Stock Market News",
@@ -235,8 +240,7 @@ export const PROJECTS = [
     description:
       "This is your one stop solution app for all your stock market news needs in a very organised manner, Avaliable on play store",
     link: "https://play.google.com/store/apps/details?id=com.evolvarc.stockpulse",
-    tags: [ "Flutter", "PostgreSQL", "RSS Feeds Scrapper", "Kotak Neo API"]
-
+    tags: ["Flutter", "PostgreSQL", "RSS Feeds Scrapper", "Kotak Neo API"],
   },
   {
     title: "Ember: Music App",
@@ -244,8 +248,7 @@ export const PROJECTS = [
     description:
       "This is a music app just like spotify, has a collection of more than 100 million songs for free, organised beautifully with material 3 expressive design, download and check it out",
     link: "https://github.com/jaswanthsatyadev/ember-releases/releases",
-    tags: [ "Kotlin","ytmusic-api (unofficial)", "Spotify API"]
-
+    tags: ["Kotlin", "ytmusic-api (unofficial)", "Spotify API"],
   },
 ];
 
