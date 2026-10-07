@@ -174,8 +174,16 @@ export const SOCIALS = [
 // Projects Data
 export const PROJECTS = [
   {
-    title: "MrCakeWala",
+    title: "Rubin E-Commerce",
     image: "/projects/project10.png",
+    description:
+      "An AI-powered clothing E-commerce website with Razorpay integration, delivery integration, product managment, admin panel.",
+    link: "https://rubin.evolvarc.com",
+    tags: ["Reactjs", "Razorpay", "Cloudflare", "Nextjs", "render"],
+  },
+  {
+    title: "MrCakeWala",
+    image: "/projects/project13.png",
     description:
       "An Cake ordering and delivery system with end to end integrations such as payment gateway, delivery tracking, admin panel, refferal system, wallet and money managment",
     link: "https://app.mrcakewala.com/",
