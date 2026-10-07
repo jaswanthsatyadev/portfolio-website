@@ -9,6 +9,8 @@ import {
 
 import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import GitHubIcon from "@/components/icons/GitHubIcon";
+import TwitterIcon from "@/components/icons/TwitterIcon";
+import InstagramIcon from "@/components/icons/InstagramIcon";
 
 export const ALL_SKILLS = [
   {
@@ -156,19 +158,45 @@ export const SOCIALS = [
     icon: GitHubIcon,
     link: "https://github.com/jaswanthsatyadev",
   },
+  {
+    name: "Twitter",
+    icon: TwitterIcon,
+    link: "https://x.com/jaswanthsatydev",
+  },
+  {
+    name: "Instagram",
+    icon: InstagramIcon,
+    link: "https://www.instagram.com/jaswanthsatyadev/",
+  },
 ] as const;
 
 
 // Projects Data
 export const PROJECTS = [
   {
-    title: "Rubin E-Commerce",
+    title: "MrCakeWala",
     image: "/projects/project10.png",
     description:
-      "An AI-powered clothing E-commerce website with Razorpay integration, delivery integration, product managment, admin panel.",
-    link: "https://rubin.evolvarc.com",
-    tags: ["Reactjs", "Razorpay", "Cloudflare", "Nextjs", "render"],
+      "An Cake ordering and delivery system with end to end integrations such as payment gateway, delivery tracking, admin panel, refferal system, wallet and money managment",
+    link: "https://app.mrcakewala.com/",
+    tags: ["supabase", "Next.js", "razorpay", "borzo","wallet & refferal implementations"],
   },
+  {
+    title: "FakeCall: Celebrity Prank Call ",
+    image: "/projects/project12.png",
+    description:
+      "Prank your friends with lifelike fake calls! FakeCall makes it seem like you're getting calls from celebrities. With realistic ringtones, animations, and call screens, you can create hilarious moments with ease.",
+    link: "https://play.google.com/store/apps/details?id=com.evolvarc.fakecall",
+    tags: ["Firebase", "Android", "kotlin","Android Jetpack Compose"]
+  },  
+  {
+    title: "Textpilot",
+    image: "/projects/project11.png",
+    description:
+      "TextPilot is a powerful system-wide AI text assistant that works across all your apps. Whether you're chatting, emailing, posting, or taking notes — TextPilot upgrades your writing instantly, without switching apps or copying text.",
+    link: "https://play.google.com/store/apps/details?id=com.evolvarc.textpilot",
+    tags: ["Android", "Kotlin", "Android Jetpack Compose", "SQLite", "system-wide AI assistant","Genkit"],
+  },  
   {
     title: "MediMate AI",
     image: "/projects/project1.png",
@@ -178,28 +206,28 @@ export const PROJECTS = [
     tags: ["Genkit", "Next.js", "Firebase", "Gemini"],
   },
   {
-    title: "AutoFare - Bus Booking System",
+    title: "AutoFare - AI Bus Transit System",
     image: "/projects/project2.png",
     description:
-      "A smart ticket verification system leveraging real-time facial recognition. It eliminates fare evasion and speeds up boarding by verifying passenger selfies against CCTV frames, optimizing public transport efficiency.",
+      "A smart ticket verification and transit booking system leveraging real-time facial recognition. It eliminates fare evasion and speeds up boarding by verifying passenger selfies against CCTV frames using face-api.js.",
     link: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
-    tags: ["API", "Next.js", "MongoDB", "Typescript"],
-  },
-  {
-    title: "AutoFare - AI Backend",
-    image: "/projects/project3.png",
-    description:
-      "The high-performance engine behind AutoFare. It processes real-time face verification between passenger selfies and CCTV snapshots using face-api.js, ensuring scalable and secure authentication for mass transit.",
-    link: "https://auto-fare.vercel.app/",
-    tags: ["Node.js", "Face Recognition", "Genkit", "MongoDB"],
-  },
-  {
-    title: "AI Learning Hub",
-    image: "/projects/project4.png",
-    description:
-      "A personalized, AI-driven learning platform that curates smart roadmaps for mastering AI, ML, and Data Science. It cuts through the noise to provide a direct, efficient path to upskilling.",
-    link: "https://ai-learing-hub.netlify.app/",
-    tags: ["Next.js", "llama", "HuggingFace", "Supabase"],
+    subLinks: [
+      {
+        label: "Bus Booking App (Frontend)",
+        url: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
+        icon: "🌐",
+        description: "Passenger ticket booking portal with secure auth & transit dashboard",
+        badge: "Next.js • Transit UI",
+      },
+      {
+        label: "Face Engine (AI Backend)",
+        url: "https://auto-fare.vercel.app/",
+        icon: "⚡",
+        description: "Real-time facial verification engine cross-matching passenger selfies & CCTV",
+        badge: "face-api.js • Node.js",
+      },
+    ],
+    tags: ["Face Recognition", "Next.js", "Node.js", "Genkit", "MongoDB"],
   },
   {
     title: "Sanctuary Sphere",
@@ -209,15 +237,6 @@ export const PROJECTS = [
     link: "https://sanctuary-sphere.vercel.app/",
     tags: ["HTML", "CSS", "Spline"],
   },
-  // {
-  //   title: "AutoTestGenie",
-  //   image: "",
-  //   description:
-  //     "This website is made for testers to generate selenium and pytest code instantly which modern AI chat bots fail to achive.",
-  //   link: "",
-  //   tags: [ "ReactJS", "FastAPI", "TailwindCSS"],
-
-  // },
   {
     title: "Steel Of Shadows",
     image: "/projects/project6.png",
@@ -325,6 +344,10 @@ export const NAV_LINKS = [
   {
     title: "Skills",
     link: "#skills",
+  },
+  {
+    title: "Engine",
+    link: "#remotion-engine",
   },
   {
     title: "Projects",
